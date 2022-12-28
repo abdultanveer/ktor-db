@@ -12,6 +12,7 @@ class DAOFacadeImpl : DAOFacade {
         title = row[Articles.title],
         body = row[Articles.body],
     )
+
     override suspend fun allArticles(): List<Article> = dbQuery {
         Articles.selectAll().map(::resultRowToArticle)
     }
@@ -43,12 +44,13 @@ class DAOFacadeImpl : DAOFacade {
         Articles.deleteWhere { Articles.id eq id } > 0
     }
 
+}
     //to add sample data- article to db
     val dao: DAOFacade = DAOFacadeImpl().apply {
         runBlocking {
-            if(allArticles().isEmpty()) {
+            if (allArticles().isEmpty()) {
                 addNewArticle("The drive to develop!", "...it's what keeps me going.")
             }
         }
     }
-}
+
