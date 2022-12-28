@@ -34,12 +34,14 @@ fun Application.configureRouting() {
             get("{id}") {
                 val id = call.parameters.getOrFail<Int>("id").toInt()
                // call.respond(FreeMarkerContent("show.ftl", mapOf("article" to dao.article(id))))
-               // call.respond(mapOf( dao.article(id)))
+               val article = dao.article(id)
+                call.respond (mapOf("article" to article))
             }
             get("{id}/edit") {
                 val id = call.parameters.getOrFail<Int>("id").toInt()
                 //call.respond(FreeMarkerContent("edit.ftl", mapOf("article" to dao.article(id))))
-                //call.respond(dao.article(id))
+                val article = dao.article(id)
+                call.respond (mapOf("article" to article))
             }
 
             post("{id}") {
