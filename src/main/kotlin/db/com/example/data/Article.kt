@@ -1,8 +1,15 @@
 package db.com.example.data
 
+import kotlinx.serialization.Serializable
 import org.jetbrains.exposed.sql.Table
 
-data class Article(val id: Int, val title: String, val body: String)
+@Serializable
+data class Article(val id: Int, val title: String, val body: String){
+    override fun toString(): String {
+        return super.toString()
+    }
+}
+
 
 object Articles : Table() {
     val id = integer("id").autoIncrement()

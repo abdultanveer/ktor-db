@@ -1,6 +1,8 @@
 plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.7.22'
     id 'io.ktor.plugin' version '2.2.1'
+    id 'org.jetbrains.kotlin.plugin.serialization'  version "$kotlin_version"
+
 }
 
 group "db.com.example"
@@ -31,7 +33,9 @@ dependencies {
     // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
     //implementation 'com.mysql:mysql-connector-j:8.0.3'
 
-    implementation "io.ktor:ktor-server-freemarker:$ktor_version"
+    //implementation "io.ktor:ktor-server-freemarker:$ktor_version"
 
+    implementation "io.ktor:ktor-server-content-negotiation:$ktor_version"
+    implementation "io.ktor:ktor-serialization-kotlinx-json:$ktor_version"
 
 }
